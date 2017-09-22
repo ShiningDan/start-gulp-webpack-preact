@@ -91,7 +91,8 @@ gulp.task('build:lib', ['clean'], () => {
   
   return gulp.src('src/**/*.js?(x)')
     .pipe(babel({
-      presets: ['es2015','react', 'stage-3']
+      presets: [['es2015', { loose : true }], 'stage-3'],
+      plugins: [['transform-react-jsx', { 'pragma' : 'h' }]]
     }))
     .pipe(gulp.dest('lib'));
 })
